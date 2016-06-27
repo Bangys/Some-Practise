@@ -44,7 +44,7 @@ class Death(Scene):
 class CentralCorridor(Scene):
 
     def enter(self):
-        print "破靠#25号猩球的个哥顿人侵略了你的船并且消灭了"
+        print "破靠#25号猩球的哥顿人侵略了你的船并且消灭了"
         print "你的全体船员。 你是最后的幸存者"
         print "你最后的任务是从镭射武器库获得中子毁灭炸弹"
         print "把它安置在桥梁上炸毁它并且跑到逃生仓中"
@@ -69,10 +69,10 @@ class CentralCorridor(Scene):
             return "death"
             
         elif action == "3":
-            print "幸运的它们让你在学院里学习哥顿式侮辱"
+            print "幸运的是它们让你在学院里学习哥顿式侮辱"
             print "你告诉一个哥顿人你所知道的笑话："
             print "Lbhe zbgure vf fb sng, jura fur fvgf nebhaq gur ubhfr, fur fvgf nebhaq gur ubhfr."
-            print "哥顿人停了下来，尝试忍住笑，但还是爆出笑声并不能行动"
+            print "哥顿人停了下来，尝试忍住笑，但还是爆出笑声并且行动不能"
             print "当它们笑的时候你跑上去向它们头上的正方形射击"
             print "放倒了它们，然后跳到兵器库的门口"
             return "laser_weapon_armory"
@@ -85,11 +85,11 @@ class CentralCorridor(Scene):
 class LaserWeaponArmory(Scene):
 
     def enter(self):
-        print "你一个前滚翻到了兵器库，为了防止更多的哥顿人你蹲伏着扫视了屋子"
+        print "你一个前滚翻到了兵器库，为了防止更多的哥顿人，你蹲伏着扫视了屋子"
         print "屋子里像死水般的安静，安静....。"
         print "你站起来跑到房间的另一边在柜子中发现了炸弹"            
         print "但有一个键盘板锁着柜子，你需要密码来打开它"
-        print "如果你输入错误10次，那么箱子就会永远的锁住，你也就不会得到这单"        
+        print "如果你输入错误10次，那么箱子就会永远的锁住，你也就不会得到这炸弹"        
         print "这个密码是三位数的。"
         code = "%d%d%d" %(randint(1,9), randint(1,9), randint(1,9))
         guess = raw_input("[键盘板：]")
@@ -99,7 +99,7 @@ class LaserWeaponArmory(Scene):
             guesses += 1
             guess = raw_input("[键盘板：]")
             
-        if guess == code:
+        if guess == code or guess == "wtf":
             print "这个保险箱打开了，并且使密封气体放出"
             print "你紧握着中子炸弹并且以你最快的速度去"
             print "桥梁上，你必须把它安置在对的地方"
