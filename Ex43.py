@@ -1,12 +1,12 @@
 # coding: utf-8
-#åŸºæœ¬å¯¼å…¥
+#»ù±¾µ¼Èë
 from sys import exit
 from random import randint
 
 class Scene(object):
 
     def enter(self):
-        print "è¿™ä¸ªåœºæ™¯å°šæœªè¢«é…ç½®ï¼Œå°†å…¶å­ç±»åŒ–å¹¶å®žæ–½ï¼ˆæ‰§è¡Œï¼‰enterï¼ˆï¼‰"
+        print "Õâ¸ö³¡¾°ÉÐÎ´±»ÅäÖÃ£¬½«Æä×ÓÀà»¯²¢ÊµÊ©£¨Ö´ÐÐ£©enter£¨£©"
         exit(1)
         
         
@@ -23,17 +23,17 @@ class Engine(object):
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
             
-        #ç¡®ä¿è¾“å‡ºæœ€åŽä¸€ä¸ªåœºæ™¯
+        #È·±£Êä³ö×îºóÒ»¸ö³¡¾°
         current_scene.enter()
 
         
 class Death(Scene):
 
     quips = [
-        "ä½ å·²ç»æŒ‚äº†ï¼Œä½ å¯èƒ½ä¸æ“…é•¿è¿™ä¸ª",
-        "ä½ æ˜¯äººç±»çš„éª„å‚²",
-        "è¿™ä¹ˆå¿«å°±æŒ‚äº† å¿«è¯»æ¡£ï¼",
-        "æˆ‘æœ‰ä¸€åªå°ç‹—èƒ½åšçš„æ¯”ä½ å¥½"
+        "ÄãÒÑ¾­¹ÒÁË£¬Äã¿ÉÄÜ²»ÉÃ³¤Õâ¸ö",
+        "ÄãÊÇÈËÀàµÄ½¾°Á",
+        "ÕâÃ´¿ì¾Í¹ÒÁË ¿ì¶Áµµ£¡",
+        "ÎÒÓÐÒ»Ö»Ð¡¹·ÄÜ×öµÄ±ÈÄãºÃ"
     ]
 
     def enter(self):
@@ -44,124 +44,124 @@ class Death(Scene):
 class CentralCorridor(Scene):
 
     def enter(self):
-        print "ç ´é #25å·çŒ©çƒçš„å“¥é¡¿äººä¾µç•¥äº†ä½ çš„èˆ¹å¹¶ä¸”æ¶ˆç­äº†"
-        print "ä½ çš„å…¨ä½“èˆ¹å‘˜ã€‚ ä½ æ˜¯æœ€åŽçš„å¹¸å­˜è€…"
-        print "ä½ æœ€åŽçš„ä»»åŠ¡æ˜¯ä»Žé•­å°„æ­¦å™¨åº“èŽ·å¾—ä¸­å­æ¯ç­ç‚¸å¼¹"
-        print "æŠŠå®ƒå®‰ç½®åœ¨æ¡¥æ¢ä¸Šç‚¸æ¯å®ƒå¹¶ä¸”è·‘åˆ°é€ƒç”Ÿä»“ä¸­"
+        print "ÆÆ¿¿#25ºÅÐÉÇòµÄ¸ç¶ÙÈËÇÖÂÔÁËÄãµÄ´¬²¢ÇÒÏûÃðÁË"
+        print "ÄãµÄÈ«Ìå´¬Ô±¡£ ÄãÊÇ×îºóµÄÐÒ´æÕß"
+        print "Äã×îºóµÄÈÎÎñÊÇ´ÓÀØÉäÎäÆ÷¿â»ñµÃÖÐ×Ó»ÙÃðÕ¨µ¯"
+        print "°ÑËü°²ÖÃÔÚÇÅÁºÉÏÕ¨»ÙËü²¢ÇÒÅÜµ½ÌÓÉú²ÖÖÐ"
         print "\n"
-        print "ä½ åº”è¯¥ä»Žä¸­å¤®èµ°å»Šä¸­è·‘ä¸‹åˆ°è¾¾æ­¦å™¨åº“"
-        print "ä¸€ä¸ªå“¥é¡¿äººè·³äº†å‡ºæ¥ï¼Œé•¿å¾—å¥½ç‰¹ä¹ˆ...(æ­¤å¤„ç•¥åŽ»1000å­—)"
-        print "å®ƒæŒ¡ä½äº†å‰å¾€æ­¦å™¨åº“çš„é“è·¯å¹¶ä¸”æ‹¿äº†æžªå°„ä½ "
+        print "ÄãÓ¦¸Ã´ÓÖÐÑë×ßÀÈÖÐÅÜÏÂµ½´ïÎäÆ÷¿â"
+        print "Ò»¸ö¸ç¶ÙÈËÌøÁË³öÀ´£¬³¤µÃºÃÌØÃ´...(´Ë´¦ÂÔÈ¥1000×Ö)"
+        print "Ëüµ²×¡ÁËÇ°ÍùÎäÆ÷¿âµÄµÀÂ·²¢ÇÒÄÃÁËÇ¹ÉäÄã"
         
-        action = raw_input("ä½ çš„åŠ¨ä½œæ˜¯ï¼Ÿ\n1.å°„å®ƒ\n2.èº²é¿\n3.è®²ä¸€ä¸ªç¬‘è¯\n")
-        #1.å°„å®ƒ 2.èº²é¿ 3.è®²ç¬‘è¯
+        action = raw_input("ÄãµÄ¶¯×÷ÊÇ£¿\n1.ÉäËü\n2.¶ã±Ü\n3.½²Ò»¸öÐ¦»°\n")
+        #1.ÉäËü 2.¶ã±Ü 3.½²Ð¦»°
         if action == "1":
-            print "ä½ ç¥žé€Ÿçš„æŽæžªå¹¶å‘å®ƒå¼€ç«"
-            print "å®ƒçš„èº«ä½“é™„è¿‘å‡ºçŽ°ä¸æ˜Žé˜²æŠ¤ç½©ï¼Œä½ çš„é•­å°„æžªå‡»ä¸­å®ƒçš„è¡£æœï¼Œä½†æœ¬ä½“å´æ²¡æœ‰äº‹"
-            print "è¿™ä¸€å‡»å¼„åäº†å®ƒå¦ˆå¦ˆç»™å®ƒä¹°çš„æ–°è¡£æœï¼Œå®ƒå¾ˆæ„¤æ€’å¹¶ä¸æ–­çˆ†ä½ çš„å¤´"
-            print "ä½ æ­»äº†ï¼Œç„¶åŽå®ƒæŠŠä½ åƒäº†"
+            print "ÄãÉñËÙµÄÌÍÇ¹²¢ÏòËü¿ª»ð"
+            print "ËüµÄÉíÌå¸½½ü³öÏÖ²»Ã÷·À»¤ÕÖ£¬ÄãµÄÀØÉäÇ¹»÷ÖÐËüµÄÒÂ·þ£¬µ«±¾ÌåÈ´Ã»ÓÐÊÂ"
+            print "ÕâÒ»»÷Åª»µÁËËüÂèÂè¸øËüÂòµÄÐÂÒÂ·þ£¬ËüºÜ·ßÅ­²¢²»¶Ï±¬ÄãµÄÍ·"
+            print "ÄãËÀÁË£¬È»ºóËü°ÑÄã³ÔÁË"
             return "death"
         elif action == "2":
-            print "ä½ çš„èº²é¿åƒä¸€ä¸ªä¸–ç•Œçº§æ‹³å‡»æ‰‹ä¸€æ ·ï¼Œæ»‘æ­¥ï¼Œå·¦æ»‘å³æ»‘"
-            print "å½“å“¥é¡¿äººæ‰£åŠ¨æ‰³æœºï¼Œä¸€é“æ¿€å…‰ç©¿è¿‡ä½ çš„å¤´"
-            print "åœ¨ä½ æ»‘æ­¥åˆ°ä¸€åŠæ—¶ï¼Œä½ çš„å¤´æ’žåˆ°äº†é‡‘å±žå¢™å¹¶æ˜è¿‡åŽ»"
-            print "ä¸ä¹…ä½ å°±é†’äº†ï¼Œä¹‹åŽä¸ªå“¥é¡¿äººè¸©è¿‡ä½ çš„å¤´å¹¶åƒäº†ä½ "
+            print "ÄãµÄ¶ã±ÜÏñÒ»¸öÊÀ½ç¼¶È­»÷ÊÖÒ»Ñù£¬»¬²½£¬×ó»¬ÓÒ»¬"
+            print "µ±¸ç¶ÙÈË¿Û¶¯°â»ú£¬Ò»µÀ¼¤¹â´©¹ýÄãµÄÍ·"
+            print "ÔÚÄã»¬²½µ½Ò»°ëÊ±£¬ÄãµÄÍ·×²µ½ÁË½ðÊôÇ½²¢»è¹ýÈ¥"
+            print "²»¾ÃÄã¾ÍÐÑÁË£¬Ö®ºó¸ö¸ç¶ÙÈË²È¹ýÄãµÄÍ·²¢³ÔÁËÄã"
             return "death"
             
         elif action == "3":
-            print "å¹¸è¿çš„æ˜¯å®ƒä»¬è®©ä½ åœ¨å­¦é™¢é‡Œå­¦ä¹ å“¥é¡¿å¼ä¾®è¾±"
-            print "ä½ å‘Šè¯‰ä¸€ä¸ªå“¥é¡¿äººä½ æ‰€çŸ¥é“çš„ç¬‘è¯ï¼š"
+            print "ÐÒÔËµÄÊÇËüÃÇÈÃÄãÔÚÑ§ÔºÀïÑ§Ï°¸ç¶ÙÊ½ÎêÈè"
+            print "Äã¸æËßÒ»¸ö¸ç¶ÙÈËÄãËùÖªµÀµÄÐ¦»°£º"
             print "Lbhe zbgure vf fb sng, jura fur fvgf nebhaq gur ubhfr, fur fvgf nebhaq gur ubhfr."
-            print "å“¥é¡¿äººåœäº†ä¸‹æ¥ï¼Œå°è¯•å¿ä½ç¬‘ï¼Œä½†è¿˜æ˜¯çˆ†å‡ºç¬‘å£°å¹¶ä¸”è¡ŒåŠ¨ä¸èƒ½"
-            print "å½“å®ƒä»¬ç¬‘çš„æ—¶å€™ä½ è·‘ä¸ŠåŽ»å‘å®ƒä»¬å¤´ä¸Šçš„æ­£æ–¹å½¢å°„å‡»"
-            print "æ”¾å€’äº†å®ƒä»¬ï¼Œç„¶åŽè·³åˆ°å…µå™¨åº“çš„é—¨å£"
+            print "¸ç¶ÙÈËÍ£ÁËÏÂÀ´£¬³¢ÊÔÈÌ×¡Ð¦£¬µ«»¹ÊÇ±¬³öÐ¦Éù²¢ÇÒÐÐ¶¯²»ÄÜ"
+            print "µ±ËüÃÇÐ¦µÄÊ±ºòÄãÅÜÉÏÈ¥ÏòËüÃÇÍ·ÉÏµÄÕý·½ÐÎÉä»÷"
+            print "·Åµ¹ÁËËüÃÇ£¬È»ºóÌøµ½±øÆ÷¿âµÄÃÅ¿Ú"
             return "laser_weapon_armory"
             
         else:
-            print "å“å‚»äº†å§å­©å­ï¼Œè¯´äººè¯ï¼"
+            print "ÏÅÉµÁË°Éº¢×Ó£¬ËµÈË»°£¡"
             return "central_corridor"
             
             
 class LaserWeaponArmory(Scene):
 
     def enter(self):
-        print "ä½ ä¸€ä¸ªå‰æ»šç¿»åˆ°äº†å…µå™¨åº“ï¼Œä¸ºäº†é˜²æ­¢æ›´å¤šçš„å“¥é¡¿äººï¼Œä½ è¹²ä¼ç€æ‰«è§†äº†å±‹å­"
-        print "å±‹å­é‡Œåƒæ­»æ°´èˆ¬çš„å®‰é™ï¼Œå®‰é™....ã€‚"
-        print "ä½ ç«™èµ·æ¥è·‘åˆ°æˆ¿é—´çš„å¦ä¸€è¾¹åœ¨æŸœå­ä¸­å‘çŽ°äº†ç‚¸å¼¹"            
-        print "ä½†æœ‰ä¸€ä¸ªé”®ç›˜æ¿é”ç€æŸœå­ï¼Œä½ éœ€è¦å¯†ç æ¥æ‰“å¼€å®ƒ"
-        print "å¦‚æžœä½ è¾“å…¥é”™è¯¯10æ¬¡ï¼Œé‚£ä¹ˆç®±å­å°±ä¼šæ°¸è¿œçš„é”ä½ï¼Œä½ ä¹Ÿå°±ä¸ä¼šå¾—åˆ°è¿™ç‚¸å¼¹"        
-        print "è¿™ä¸ªå¯†ç æ˜¯ä¸‰ä½æ•°çš„ã€‚"
+        print "ÄãÒ»¸öÇ°¹ö·­µ½ÁË±øÆ÷¿â£¬ÎªÁË·ÀÖ¹¸ü¶àµÄ¸ç¶ÙÈË£¬Äã¶×·ü×ÅÉ¨ÊÓÁËÎÝ×Ó"
+        print "ÎÝ×ÓÀïÏñËÀË®°ãµÄ°²¾²£¬°²¾²....¡£"
+        print "ÄãÕ¾ÆðÀ´ÅÜµ½·¿¼äµÄÁíÒ»±ßÔÚ¹ñ×ÓÖÐ·¢ÏÖÁËÕ¨µ¯"            
+        print "µ«ÓÐÒ»¸ö¼üÅÌ°åËø×Å¹ñ×Ó£¬ÄãÐèÒªÃÜÂëÀ´´ò¿ªËü"
+        print "Èç¹ûÄãÊäÈë´íÎó10´Î£¬ÄÇÃ´Ïä×Ó¾Í»áÓÀÔ¶µÄËø×¡£¬ÄãÒ²¾Í²»»áµÃµ½ÕâÕ¨µ¯"        
+        print "Õâ¸öÃÜÂëÊÇÈýÎ»ÊýµÄ¡£"
         code = "%d%d%d" %(randint(1,9), randint(1,9), randint(1,9))
-        guess = raw_input("[é”®ç›˜æ¿ï¼š]")
+        guess = raw_input("[¼üÅÌ°å£º]")
         guesses = 1 
         while guess != code and guesses < 10:
-            print "å“”å“”å“”å“”â€¦â€¦"
+            print "ßÙßÙßÙßÙ¡­¡­"
             guesses += 1
-            guess = raw_input("[é”®ç›˜æ¿ï¼š]")
+            guess = raw_input("[¼üÅÌ°å£º]")
             
         if guess == code or guess == "wtf":
-            print "è¿™ä¸ªä¿é™©ç®±æ‰“å¼€äº†ï¼Œå¹¶ä¸”ä½¿å¯†å°æ°”ä½“æ”¾å‡º"
-            print "ä½ ç´§æ¡ç€ä¸­å­ç‚¸å¼¹å¹¶ä¸”ä»¥ä½ æœ€å¿«çš„é€Ÿåº¦åŽ»"
-            print "æ¡¥æ¢ä¸Šï¼Œä½ å¿…é¡»æŠŠå®ƒå®‰ç½®åœ¨å¯¹çš„åœ°æ–¹"
+            print "Õâ¸ö±£ÏÕÏä´ò¿ªÁË£¬²¢ÇÒÊ¹ÃÜ·âÆøÌå·Å³ö"
+            print "Äã½ôÎÕ×ÅÖÐ×ÓÕ¨µ¯²¢ÇÒÒÔÄã×î¿ìµÄËÙ¶ÈÈ¥"
+            print "ÇÅÁºÉÏ£¬Äã±ØÐë°ÑËü°²ÖÃÔÚ¶ÔµÄµØ·½"
             return "the_bridge"
         else:
-            print "ç®±å­å¼€å§‹æ…¢æ…¢èžåŒ–å¹¶æ”¾å‡ºåˆºé¼»çš„æ°”ä½“"
-            print "ä½ ç˜«ååœ¨é‚£é‡Œï¼Œæœ€åŽå“¥é¡¿äººæ¯ç­äº†è¿™è‰˜èˆ¹"
-            print "ä½ æŒ‚äº†è€å…„"
+            print "Ïä×Ó¿ªÊ¼ÂýÂýÈÚ»¯²¢·Å³ö´Ì±ÇµÄÆøÌå"
+            print "ÄãÌ±×øÔÚÄÇÀï£¬×îºó¸ç¶ÙÈË»ÙÃðÁËÕâËÒ´¬"
+            print "Äã¹ÒÁËÀÏÐÖ"
             return "death"
             
             
 class TheBridge(Scene):
     def enter(self):
-        print "ä½ æ‰‹è‡‚ä¸‹å¤¹ç€ç‚¸å¼¹çªè¿›æ¡¥æ¢"
-        print "æƒŠåŠ¨äº†5ä¸ªä¼å›¾æŽ§åˆ¶èˆ¹èˆ°çš„å“¥é¡¿äºº"
-        print "å®ƒä»¬èº«ä¸Šæœ‰æ¯”ä¹‹å‰é‚£ä¸ªæ›´ä¸‘çš„è¡£æœ" 
-        print "å®ƒä»¬æ²¡æœ‰æ‹”å‡ºå®ƒä»¬çš„æ­¦å™¨ï¼Œå½“å®ƒä»¬çœ‹åˆ°ä½ æ‰‹è‡‚ä¸‹çš„ç‚¸å¼¹ï¼Œå®ƒä»¬ä¸å¸Œæœ›å®ƒè¢«æ”¾ç½®"
+        print "ÄãÊÖ±ÛÏÂ¼Ð×ÅÕ¨µ¯Í»½øÇÅÁº"
+        print "¾ª¶¯ÁË5¸öÆóÍ¼¿ØÖÆ´¬½¢µÄ¸ç¶ÙÈË"
+        print "ËüÃÇÉíÉÏÓÐ±ÈÖ®Ç°ÄÇ¸ö¸ü³óµÄÒÂ·þ" 
+        print "ËüÃÇÃ»ÓÐ°Î³öËüÃÇµÄÎäÆ÷£¬µ±ËüÃÇ¿´µ½ÄãÊÖ±ÛÏÂµÄÕ¨µ¯£¬ËüÃÇ²»Ï£ÍûËü±»·ÅÖÃ"
         
-        action = raw_input("ä½ è¦æ€Žä¹ˆåšï¼Ÿ\n1.æ‰”å‡ºç‚¸å¼¹\n2.æ…¢æ…¢çš„æ”¾ç½®ç‚¸å¼¹\n")
+        action = raw_input("ÄãÒªÔõÃ´×ö£¿\n1.ÈÓ³öÕ¨µ¯\n2.ÂýÂýµÄ·ÅÖÃÕ¨µ¯\n")
         
         if action == "1":
-            print "åœ¨è¿™ç´§æ€¥æ—¶åˆ»ä½ æœä¸€å †å“¥é¡¿äººæ‰”å‡ºäº†ç‚¸å¼¹"
-            print "ç„¶åŽä½ ä»Žé—¨è·³äº†å‡ºåŽ»"
-            print "å½“ä½ è½ä¸‹çš„é‚£ä¸€åˆ»ä¸€ä¸ªå“¥é¡¿äººä»ŽèƒŒåŽå°„ä½ ä¸€æžª"
-            print "å½“ä½ è¦æ­»çš„æ—¶å€™ä½ çœ‹åˆ°äº†å®ƒä»¬ç–¯ç‹‚çš„å°è¯•æ‹†å¼¹"
-            print "ä½ æ­»äº†ä»¥åŽå®ƒä»¬ä¹Ÿè¢«ç‚¸äº†ä¸ªç¨€å·´çƒ‚"
+            print "ÔÚÕâ½ô¼±Ê±¿ÌÄã³¯Ò»¶Ñ¸ç¶ÙÈËÈÓ³öÁËÕ¨µ¯"
+            print "È»ºóÄã´ÓÃÅÌøÁË³öÈ¥"
+            print "µ±ÄãÂäÏÂµÄÄÇÒ»¿ÌÒ»¸ö¸ç¶ÙÈË´Ó±³ºóÉäÄãÒ»Ç¹"
+            print "µ±ÄãÒªËÀµÄÊ±ºòÄã¿´µ½ÁËËüÃÇ·è¿ñµÄ³¢ÊÔ²ðµ¯"
+            print "ÄãËÀÁËÒÔºóËüÃÇÒ²±»Õ¨ÁË¸öÏ¡°ÍÀÃ"
             return "death"
             
         elif action == "2":
-            print "ä½ çž„å‡†ç€è‡ªå·±æ‰‹è‡‚ä¸‹çš„ç‚¸å¼¹"
-            print "å“¥é¡¿äººå¼€å§‹ç´§å¼ èµ·æ¥ï¼Œå®ƒä»¬æŠŠæ‰‹ä¸¾äº†èµ·æ¥"
-            print "ä½ è°¨æ…Žçš„èƒŒå¯¹ç€é—¨ç§»åŠ¨"
-            print "ç„¶åŽå°å¿ƒç¿¼ç¿¼çš„æŠŠç‚¸å¼¹å®‰ç½®åœ¨äº†æ¥¼æ¢¯ä¸­"
-            print "å¹¶ä¸”çž„å‡†å®ƒï¼Œä½ å‘åŽä¸€è·ƒ"
-            print "æŒ‰ä¸‹äº†å…³é—­æŒ‰é’®æŠŠé”æ‰“åï¼Œè¿™æ ·å®ƒä»¬å°±å‡ºä¸åŽ»äº†"
-            print "æ—¢ç„¶ç‚¸å¼¹å·²ç»å®‰ç½®ï¼Œä½ çŽ°åœ¨åº”è¯¥åŽ»é€ƒç”Ÿèˆ±äº†"
+            print "ÄãÃé×¼×Å×Ô¼ºÊÖ±ÛÏÂµÄÕ¨µ¯"
+            print "¸ç¶ÙÈË¿ªÊ¼½ôÕÅÆðÀ´£¬ËüÃÇ°ÑÊÖ¾ÙÁËÆðÀ´"
+            print "Äã½÷É÷µÄ±³¶Ô×ÅÃÅÒÆ¶¯"
+            print "È»ºóÐ¡ÐÄÒíÒíµÄ°ÑÕ¨µ¯°²ÖÃÔÚÁËÂ¥ÌÝÖÐ"
+            print "²¢ÇÒÃé×¼Ëü£¬ÄãÏòºóÒ»Ô¾"
+            print "°´ÏÂÁË¹Ø±Õ°´Å¥°ÑËø´ò»µ£¬ÕâÑùËüÃÇ¾Í³ö²»È¥ÁË"
+            print "¼ÈÈ»Õ¨µ¯ÒÑ¾­°²ÖÃ£¬ÄãÏÖÔÚÓ¦¸ÃÈ¥ÌÓÉú²ÕÁË"
             return "escape_pod"
         else:
-            print "å“å‚»äº†å§å­©å­ï¼Œè¯´äººè¯ï¼"
+            print "ÏÅÉµÁË°Éº¢×Ó£¬ËµÈË»°£¡"
             return "the_bridge"
             
             
 class EscapePod(Scene):
 
     def enter(seld):
-        print "åœ¨æ•´è‰˜èˆ¹çˆ†ç‚¸ä¹‹å‰ï¼Œä½ æ‹¼äº†è€å‘½äº†ä¸€é¡¿è·‘ï¼Œåˆ°äº†é€ƒç”Ÿèˆ±"
-        print "ä½ ä¸æ•¢ä¿è¯æ²¡æœ‰ä¸€ä¸ªå“¥é¡¿äººè¿˜åœ¨èˆ¹é‡Œï¼Œæ‰€ä»¥ä½ çš„è·‘æ˜¯å¯¹çš„"
-        print "ä½ åˆ°äº†é€ƒç”Ÿä»“çš„ä¸€ä¸ªå¤§åŽ…ï¼Œä½ çŽ°åœ¨éœ€è¦åŽ»æ‰“å¼€å…¶ä¸­ä¸€ä¸ª"
-        print "ä½†æ˜¯ä½ æ²¡æœ‰æ—¶é—´åŽ»ç»†çœ‹ï¼Œè¿™é‡Œæœ‰äº”ä¸ªæˆ¿é—´ï¼Œä½ é€‰æ‹©å“ªä¸ªï¼Ÿ"
+        print "ÔÚÕûËÒ´¬±¬Õ¨Ö®Ç°£¬ÄãÆ´ÁËÀÏÃüÁËÒ»¶ÙÅÜ£¬µ½ÁËÌÓÉú²Õ"
+        print "Äã²»¸Ò±£Ö¤Ã»ÓÐÒ»¸ö¸ç¶ÙÈË»¹ÔÚ´¬Àï£¬ËùÒÔÄãµÄÅÜÊÇ¶ÔµÄ"
+        print "Äãµ½ÁËÌÓÉú²ÖµÄÒ»¸ö´óÌü£¬ÄãÏÖÔÚÐèÒªÈ¥´ò¿ªÆäÖÐÒ»¸ö"
+        print "µ«ÊÇÄãÃ»ÓÐÊ±¼äÈ¥Ï¸¿´£¬ÕâÀïÓÐÎå¸ö·¿¼ä£¬ÄãÑ¡ÔñÄÄ¸ö£¿"
 
         good_pod = randint(1, 5)
-        guess = raw_input("[ä½ é€‰æ‹©ï¼Ÿ]>>>\n")
+        guess = raw_input("[ÄãÑ¡Ôñ£¿]>>>\n")
         
         if int(guess) != good_pod:
-            print "ä½ è·³è¿›äº†ç¬¬%så·ï¼Œå¹¶ä¸”æŒ‰äº†å¼¹å°„æŒ‰é’®" % guess
-            print "è¿™ä¸ªä»“é£žåˆ°äº†å®‡å®™çš„ç©ºæ´žä¸­ï¼Œè™šç©ºæ’•ç¢Žäº†æœºä½“ã€ä½ çš„èº«ä½“å˜æˆäº†æžœå†»"
+            print "ÄãÌø½øÁËµÚ%sºÅ£¬²¢ÇÒ°´ÁËµ¯Éä°´Å¥" % guess
+            print "Õâ¸ö²Ö·Éµ½ÁËÓîÖæµÄ¿Õ¶´ÖÐ£¬Ðé¿ÕËºËéÁË»úÌå¡¢ÄãµÄÉíÌå±ä³ÉÁË¹û¶³"
             return "death"
         else:
-            print "ä½ è·³è¿›äº†ç¬¬%så·ï¼Œå¹¶ä¸”æŒ‰äº†å¼¹å°„æŒ‰é’®" % guess      
-            print "æœºå™¨å¯åŠ¨ï¼Œä½ æ…¢æ…¢çš„ç¦»å¼€äº†è¿™ä¸ªæ˜¯éžä¹‹åœ°"
-            print "ä½ å›žå¤´çœ‹åˆ°äº†ç‚¸å¼¹å°±åƒæ˜Žäº®çš„æ˜Ÿæ˜Ÿé‚£æ ·å‘å…‰ï¼Œç»“æŸäº†å°‘å¹´"
-            print "ä½ èµ¢äº†ï¼Œä½ æˆåŠŸæ‹¯æ•‘äº†ä¸–ç•Œ"
+            print "ÄãÌø½øÁËµÚ%sºÅ£¬²¢ÇÒ°´ÁËµ¯Éä°´Å¥" % guess      
+            print "»úÆ÷Æô¶¯£¬ÄãÂýÂýµÄÀë¿ªÁËÕâ¸öÊÇ·ÇÖ®µØ"
+            print "Äã»ØÍ·¿´µ½ÁËÕ¨µ¯¾ÍÏñÃ÷ÁÁµÄÐÇÐÇÄÇÑù·¢¹â£¬½áÊøÁËÉÙÄê"
+            print "ÄãÓ®ÁË£¬Äã³É¹¦Õü¾ÈÁËÊÀ½ç"
         
             return "finished"
         
