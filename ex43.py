@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 基本导入
+
 from sys import exit
 from random import randint
 
