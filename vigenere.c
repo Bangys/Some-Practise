@@ -9,7 +9,7 @@ int main(int argc, char *argv[]){
     char *key, *plaintext;
 
     if (argc>2||argv[1]==NULL){    //这个if循环用来检查输入个数
-        printf("too much!\n");
+        printf("Error!\n");
         return 1;
     }
     else { //检查输入是否满足条件
@@ -26,35 +26,36 @@ int main(int argc, char *argv[]){
     printf("plaintext:\n");
     plaintext = GetString();
     printf("ciphertext:\n");
-    for(int i=0, j=0, n=strlen(plaintext);i<n;i++, j++)
-    {
-
-        if ((plaintext[i]>='A'&&plaintext[i]<='Z')||(plaintext[i]>='a'&&plaintext[i]<='z')) //留字符串部分
-        {   //检查明文是否为大小写字母
-            if (i%len==0&&i!=0) //key长度小于明文时调头
+    for(int i=0, j=0, n=strlen(plaintext);i<n;i++){
+        if ((plaintext[i]>='A'&&plaintext[i]<='Z')||(plaintext[i]>='a'&&plaintext[i]<='z')){  //检查plaintext是否为大小写字母
+            if (j==len&&i!=0) //key长度不足时回到开头
                 j = 0;
-            if (plaintext[i]>='A'&&plaintext[i]<='Z') //大写部分
-                {
-                plaintext[i] = plaintext[i]+(key[j]-'A'); //加密后
-                while (plaintext[i]>'Z')
-                    plaintext[i]-= 26;
+            if (key[j]>='A'&&key[j]<='Z') //使A(a)表示0,B(b)表示1...
+                key[j] -= 'A';
+            if (key[j]>='a'&&key[j]<='z') 
+                key[j] -= 'a';
+            if (plaintext[i]>='A'&&plaintext[i]<='Z'){ //大写部分
+                if (plaintext[i]+key[j]>'Z'){
+                        while (plaintext[i]+key[j]>'Z') //控制ASC码值
+                            plaintext[i]-= 26;
+                }
+                plaintext[i] = plaintext[i]+key[j];
                 printf("%c", plaintext[i]);
+            }   
+
+            if (plaintext[i]>='a'&&plaintext[i]<='z'){ //小写部分
+                if (plaintext[i]+key[j]>'z'){
+                        while (plaintext[i]+key[j]>'z') //控制ASC码值
+                            plaintext[i]-=26;
                 }
-                
-            if (plaintext[i]>='a'&&plaintext[i]<='z') //小写部分
-                {
-                    plaintext[i] = plaintext[i]+(key[j]-'a'); //加密后
-                    // printf("ok\n");
-                    //  if (plaintext[i]>'z')
-                    // printf("no%c", (plaintext[i]-('a'-'G')));
-                    printf("%c", plaintext[i]);
-                }
-            }else{ //输出非字符
+                plaintext[i] = plaintext[i]+key[j];
+                printf("%c", plaintext[i]);
+            }
+            j+=1;    
+        }else{ //输出非字符
                 printf("%c",  plaintext[i]);
-                j = j - 1;}
-        }
+         }
+    }
     printf("\n");
     return 0;
-    }
-
-
+}
