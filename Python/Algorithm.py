@@ -67,6 +67,8 @@ class BaseAlgorithm(object):
                 position -= 1
             self.lst[position] = current_val
 
+    # shell sort
+    # nlog2n
     def shellsort(self):
         """
         插入排序的改进版(也叫缩小增量排序)
