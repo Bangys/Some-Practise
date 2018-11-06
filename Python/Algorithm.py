@@ -67,6 +67,44 @@ class BaseAlgorithm(object):
                 position -= 1
             self.lst[position] = current_val
 
+    def shellsort(self):
+        """
+        插入排序的改进版(也叫缩小增量排序)
+        1.把序列按增量分成多个子序列
+        2.对子序列进行直接插入排序
+        3.依次缩减增量再排序, 生成一个"基本有序"的序列
+        4.把"基本有序"的序列进行最后一次插入排序
+        """
+        gap = self.length // 2
+        while gap > 0:
+            for sub_position in range(gap):
+
+                # equal to insert sort(add gap)
+                for i in range(sub_position + gap, self.length, gap):
+                    curval = self.lst[i]
+                    sequence = i
+                    while sequence >= gap and self.lst[sequence - gap] > curval:
+                        self.lst[sequence] = self.lst[sequence - gap]
+                        sequence -= gap
+                    self.lst[sequence] = curval
+            # print("list:", self.lst,"gap:", gap,)
+            gap //= 2
+
+
+    def wiki_shellsort(self):
+        gap = self.length // 2
+        while gap > 0:
+            for i in range(gap, self.length):
+                tmp = self.lst[i]
+                j = i
+                while j >= gap and self.lst[j - gap] > tmp:
+                    self.lst[j] = self.lst[j - gap]
+                    j -= gap
+                self.lst[j] = tmp
+            # print("list:", self.lst,"gap:", gap,)
+            gap //= 2
+
+
 
 if __name__ == '__main__':
     algo = BaseAlgorithm(10)
@@ -74,4 +112,6 @@ if __name__ == '__main__':
     # algo.bbst_improved()
     # algo.slcst()
     # algo.isrtst()
+    algo.wiki_shellsort()
+    # algo.shellsort()
     print('After:', algo.lst)
