@@ -106,6 +106,24 @@ class BaseAlgorithm(object):
             # print("list:", self.lst,"gap:", gap,)
             gap //= 2
 
+def merge(left, right):
+    res = list()
+    while left and right:
+        res.append(left.pop(0)) if left[0] <= right[0] else res.append(right.pop(0))
+    if left:
+        res += left
+    if right:
+        res += right
+    return res
+
+def mergesort(lst):
+    if len(lst) <= 1:
+        return lst
+    mid = len(lst) // 2
+    left, right = lst[:mid], lst[mid:]
+    left = mergesort(left)
+    right = mergesort(right)
+    return merge(left, right)
 
 
 if __name__ == '__main__':
@@ -114,6 +132,7 @@ if __name__ == '__main__':
     # algo.bbst_improved()
     # algo.slcst()
     # algo.isrtst()
-    algo.wiki_shellsort()
+    # algo.wiki_shellsort()
     # algo.shellsort()
-    print('After:', algo.lst)
+    result = mergesort(algo.lst)
+    print('After:', result)
