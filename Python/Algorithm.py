@@ -94,6 +94,9 @@ class BaseAlgorithm(object):
 
 
     def wiki_shellsort(self):
+        """
+        维基百科版
+        """
         gap = self.length // 2
         while gap > 0:
             for i in range(gap, self.length):
@@ -107,6 +110,9 @@ class BaseAlgorithm(object):
             gap //= 2
 
 def merge(left, right):
+    """
+    归并操作:比较
+    """
     res = list()
     while left and right:
         res.append(left.pop(0)) if left[0] <= right[0] else res.append(right.pop(0))
@@ -117,6 +123,9 @@ def merge(left, right):
     return res
 
 def mergesort(lst):
+    """
+    运用二分法
+    """
     if len(lst) <= 1:
         return lst
     mid = len(lst) // 2
