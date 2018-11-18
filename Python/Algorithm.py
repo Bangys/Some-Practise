@@ -134,6 +134,25 @@ def mergesort(lst):
     right = mergesort(right)
     return merge(left, right)
 
+def partition(lst, first, last):
+    pivot = lst[last - 1]
+    i = first - 1
+    for j in range(first, last):
+        if lst[j] < pivot:
+            i += 1
+            lst[i], lst[j] = lst[j], lst[i]
+    if lst[last - 1] < lst[i + 1]:
+        lst[i + 1], lst[last - 1] = lst[last - 1], lst[i + 1]
+    return i + 1
+
+def quicksort(lst, first, last):
+    if first < last:
+        p = partition(lst, first, last)
+        quicksort(lst, first, p)
+        quicksort(lst, p + 1, last)
+    return
+
+
 
 if __name__ == '__main__':
     algo = BaseAlgorithm(10)
@@ -143,5 +162,6 @@ if __name__ == '__main__':
     # algo.isrtst()
     # algo.wiki_shellsort()
     # algo.shellsort()
-    result = mergesort(algo.lst)
+    # result = mergesort(algo.lst)
+    result = quicksort(algo.lst, 0, algo.length)
     print('After:', result)
