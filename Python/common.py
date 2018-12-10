@@ -2,13 +2,14 @@
 from random import randrange
 
 
-# recursion
+# 1.1 Fibonacci sequence(递归)
 def fib_r(n):
     if n <= 1:
         return n
     return fib_r(n-1) + fib_r(n-2)
 
-# iteration
+
+# 1.2 Fibonacci sequence(迭代)
 def fib_iter(a, b, n):
     if n == 0:
         return b
@@ -19,8 +20,22 @@ def fib_i(n):
     b = 0
     return fib_iter(a, b, n)
 
-if __name__ == '__main__':
-    test1 = [fib_r(i) for i in range(1, 11)]
-    test2 = [fib_i(i) for i in range(1, 11)]
-    print(test1)
-    print(test2)
+
+# 2.1 Counter(闭包)
+def Counter():
+    res = []
+    def inner():
+        res.append(0)
+        return len(res)
+    return inner 
+
+# 2.2 Counter(生成器)
+def CounterGenerator():
+    n = 1
+    while True:
+        yield n
+        n += 1
+
+cg = CounterGenerator()
+def Counter():
+    return next(cg)
