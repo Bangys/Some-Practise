@@ -39,3 +39,25 @@ def CounterGenerator():
 cg = CounterGenerator()
 def Counter():
     return next(cg)
+
+
+# producer-consumer model(用协程实现) 
+def consumer():
+    r = ''
+    while True:
+        n1 = yield r # 接收后向下执行
+        if not n1:
+            return
+        print('客：消费%s中...' % n1) 
+        r = '%s消费完毕' % n1
+
+def produce(c):
+    foo = c.send(None) # 启动生成器 
+    n = 0
+    lst = ['包子', '河流', '矿石', '空气', '土壤']
+    while n < len(lst):
+        print('老板：%s已生产完毕' % lst[n])
+        r1 = c.send(lst[n]) # 把值传到consumer中
+        print('客：%s' % r1)
+        n+=1
+    c.close()
