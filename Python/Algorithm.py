@@ -26,10 +26,10 @@ class BaseAlgorithm(object):
                     self.lst[j], self.lst[j + 1] = self.lst[j + 1], self.lst[j]
 
     def bbst_improved(self):
-    	"""
+        """
         添加标记,如果没有做过交换则说明已有序, 可退出循环
-    	"""
-    	for i in range(self.length - 1, 0, -1):
+        """
+        for i in range(self.length - 1, 0, -1):
             flag = True
             for j in range(i):
                 if self.lst[j] > self.lst[j + 1]:
@@ -92,7 +92,6 @@ class BaseAlgorithm(object):
             # print("list:", self.lst,"gap:", gap,)
             gap //= 2
 
-
     def wiki_shellsort(self):
         """
         维基百科版
@@ -109,6 +108,7 @@ class BaseAlgorithm(object):
             # print("list:", self.lst,"gap:", gap,)
             gap //= 2
 
+
 def merge(left, right):
     """
     归并操作:比较
@@ -122,6 +122,7 @@ def merge(left, right):
         res += right
     return res
 
+
 def mergesort(lst):
     """
     运用二分法
@@ -134,7 +135,8 @@ def mergesort(lst):
     right = mergesort(right)
     return merge(left, right)
 
-def partition(lst, first, last):
+
+def qs2_partition(lst, first, last):
     pivot = lst[last - 1]
     i = first - 1
     for j in range(first, last):
@@ -145,13 +147,30 @@ def partition(lst, first, last):
         lst[i + 1], lst[last - 1] = lst[last - 1], lst[i + 1]
     return i + 1
 
-def quicksort(lst, first, last):
+
+# 较详细的快排
+def quicksort2(lst, first, last):
     if first < last:
-        p = partition(lst, first, last)
-        quicksort(lst, first, p)
-        quicksort(lst, p + 1, last)
+        p = qs2_partition(lst, first, last)
+        quicksort2(lst, first, p)
+        quicksort2(lst, p + 1, last)
     return
 
+
+# 更简洁的快排
+def new_quicksort(list):
+    if len(list) < 2:
+        return list
+    else:
+        # 找中点
+        midpivot = list[0]
+        # 比中点小的数
+        less_pivot = [i for i in list[1:] if i <= midpivot]
+        # 比中点大的数
+        bigger_pivot = [i for i in list[1:] if i > midpivot]
+        # 递归，最后拼成结果值
+        result = new_quicksort(less_pivot) + [midpivot] + new_quicksort(bigger_pivot)
+        return result
 
 
 if __name__ == '__main__':
@@ -163,5 +182,5 @@ if __name__ == '__main__':
     # algo.wiki_shellsort()
     # algo.shellsort()
     # result = mergesort(algo.lst)
-    result = quicksort(algo.lst, 0, algo.length)
-    print('After:', result)
+    # result = quicksort2(algo.lst, 0, algo.length)
+    # print('After:', result)
