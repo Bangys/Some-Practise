@@ -37,6 +37,7 @@ class Node(object):
         node = self._node_at_index(index)
         return node.element
 
+    # 栈可用append+pop实现，队列用prepend+pop
     def append(self, node):
         n = self
         while n.next is not None:
@@ -48,6 +49,23 @@ class Node(object):
     def prepend(self, node):
         # 找到head 把node赋给head.next
         pass
+
+    def pop(self):
+        tail = self
+        if tail.next is None:
+            tail.val = None
+            return self.val
+
+        while tail.next is not None:
+            # tail为链表最后一个元素
+            tail = tail.next
+        before_tail = self
+        while before_tail.next is not tail:
+            before_tail = before_tail.next
+
+        # 找到tail前一个元素并把next指为None
+        before_tail.next = None
+        return tail.val
 
     # 打印链表： "head > node1 > node2 ..."
     def show(self):
@@ -76,7 +94,6 @@ def test():
     head.show()
     # head > 111 > 222 > 333
 
-
 if __name__ == '__main__':
-    # test()
+    test()
     pass
