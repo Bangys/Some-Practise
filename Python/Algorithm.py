@@ -162,11 +162,10 @@ def new_quicksort(list):
     if len(list) < 2:
         return list
     else:
-        # 找中点
+        # 设中点
         midpivot = list[0]
-        # 比中点小的数
+        # 分大小两部分
         less_pivot = [i for i in list[1:] if i <= midpivot]
-        # 比中点大的数
         bigger_pivot = [i for i in list[1:] if i > midpivot]
         # 递归，最后拼成结果值
         result = new_quicksort(less_pivot) + [midpivot] + new_quicksort(bigger_pivot)
@@ -183,4 +182,5 @@ if __name__ == '__main__':
     # algo.shellsort()
     # result = mergesort(algo.lst)
     # result = quicksort2(algo.lst, 0, algo.length)
-    # print('After:', result)
+    print(new_quicksort(algo.lst))
+    print('After:', algo.lst)
