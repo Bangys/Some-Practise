@@ -48,7 +48,7 @@ def Counter():
     return next(cg)
 
 
-# producer-consumer model(用协程实现) 
+# producer-consumer model(用协程实现)
 def consumer():
     r = ''
     while True:
@@ -115,3 +115,40 @@ def binary_search(lst, item):
         else:
             return mid
     return None
+
+
+
+from collections import OrderedDict
+class LRUCache(object):
+    """
+    LRUCache：least recently used，替换掉最少使用的对象，保留最近使用的
+    实现一个LRUCache：
+    思路：通过一个循环双端队列不断更新最新访问的key
+    实现：用 dict + collections.OrderedDict（底层由循环双端链表实现）
+        dict用来当作k/v键值对的缓存
+        OrderedDict实现更新最近访问的Key
+    """
+
+    def __init__(self, size=10):
+        self.od = OrderedDict()
+        self.size = size
+
+    def get(self, key):
+        if key in self.od:
+            val = self.od[key]
+            # 访问后放到队尾
+            self.od.move_to_end(key)
+            return val
+        else:
+            return -1
+
+    def put(self, key, val):
+        if key in self.od:
+            # 更新：删除 -> 新增, 更新后位置为最新
+            del self.od[key]
+            self.od[key] = val
+        else:
+            self.od[key] = val
+            if len(self.od) > self.size:
+                # 删除最早的元素
+                self.od.popitem(last=False)
