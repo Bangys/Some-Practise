@@ -3,8 +3,11 @@
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname 6-6) (read-case-sensitive #t) (teachpacks ((lib "draw.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "draw.rkt" "teachpack" "htdp")) #f)))
 
 
-;;数据分析和定义
-;; circle是结构体(make-circle p r c)，其中p是posn结构体，r是数，c是符号
+;;数据定义
+;; circle是结构体:
+;;   (make-circle p r c)
+;; 其中p是posn结构体，r是数，c是符号
+
 (define-struct circle(point radius color))
 ;;template:
 ;; fun-for-circle: circle -> ???
@@ -16,7 +19,9 @@
 
 
 
-;; rectangle是结构体(make-rectangle p w h c)，其中p是posn结构体，w和h是数，c是符号
+;; rectangle是结构体:
+;;   (make-rectangle p w h c)
+;; 其中p是posn结构体，w和h是数，c是符号
 (define-struct rectangle(point width height color))
 ;;template:
 ;; fun-for-rect: rectangle -> ???

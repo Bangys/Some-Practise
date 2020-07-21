@@ -1,9 +1,9 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname 6-2) (read-case-sensitive #t) (teachpacks ((lib "draw.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "draw.rkt" "teachpack" "htdp")) #f)))
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname 6-2) (read-case-sensitive #t) (teachpacks ((lib "hangman.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #t #t none #f ((lib "hangman.rkt" "teachpack" "htdp")) #f)))
 
 
-;; 灯泡大小 距离
+;; 画布宽、高 灯泡半径 边距
 (define WIDTH 50)
 (define HEIGHT 160)
 (define BULB-RADIUS 20)
@@ -28,7 +28,9 @@
   )
 )
 
-;; 略，和clear-blub类似
+;; draw-blub: symbol -> boolean
+;; usage：输入代表颜色的符号，打开对应的灯
+;; example: (draw-bulb 'red) 在画布上画一个红色圆盘
 (define (draw-bulb color)
   (cond
   [(symbol=? color 'red)(draw-solid-disk(make-posn X-BULBS Y-RED) BULB-RADIUS 'red)]
@@ -44,7 +46,7 @@
   (and (clear-bulb color1) (draw-bulb color2)))
 
 ;; next: symbol -> symbol
-;; usage:把当前颜色转为下一个颜色 红转绿 绿转黄 黄转红
+;; usage:把当前颜色转为下一个颜色 红转绿 绿转黄 黄转红，返回切换后颜色的字符值
 ;; example：next('red) 会关掉红灯然后亮绿灯
 (define (next current-color)
   (cond
@@ -54,15 +56,12 @@
       ))
 
 
-;; 绘制灯光
+
+;; run
+;; 绘制画布，画出红灯，等待1s，下一个颜色
 (start WIDTH HEIGHT)
-; (draw-solid-disk(make-posn X-BULBS Y-RED) BULB-RADIUS 'red)
-; (draw-circle(make-posn X-BULBS Y-YELLOW) BULB-RADIUS 'yellow)
-; (draw-circle(make-posn X-BULBS Y-GREEN) BULB-RADIUS 'green)
 (draw-bulb 'red)
-; sleep 1s
+(sleep 1)
 (next 'red)
-
-
-
-;;测试
+(sleep 1)
+(next (next 'red))

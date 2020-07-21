@@ -6,11 +6,15 @@
 
 
 (define-struct circle(point radius color))
-;; circle是结构体(make-circle p r c)，其中p是posn结构体，r是数，c是符号
+;; circle是结构体
+;   (make-circle p r c)
+; 其中p是posn结构体，r是数，c是符号
 
 
 (define-struct rectangle(point width height color))
-;; rectangle是结构体(make-rectangle p w h c)，其中p是posn结构体，w和h是数，c是符号
+;; rectangle是结构体
+;   (make-rectangle p w h c)
+; 其中p是posn结构体，w和h是数，c是符号
 
 ;; shape是以下中的一个：
 ;; 1.circle
@@ -38,7 +42,7 @@
 ;; 输入一个shape并画出
 (define (draw-shape shape)
 (cond
-    [(circle? shape) (draw-circle (circle-point shape) (circle-radius shape) (circle-color shape))]
+    [(circle? shape) (draw-solid-disk (circle-point shape) (circle-radius shape) (circle-color shape))]
     [(rectangle? shape)   (draw-solid-rect
           (rectangle-point shape)
           (rectangle-width shape)
@@ -68,7 +72,7 @@
 ;; 清除输入的形状
 (define (clear-shape shape)
 (cond
-    [(circle? shape)  (clear-circle (circle-point shape) (circle-radius shape))]
+    [(circle? shape)  (clear-solid-disk (circle-point shape) (circle-radius shape))]
     [(rectangle? shape) (clear-solid-rect (rectangle-point shape)
                         (rectangle-width shape)
                         (rectangle-height shape))]
@@ -107,5 +111,5 @@
 (define R2 (make-rectangle (make-posn 20 30) 30 20 'black))
 
 (start 400 400)
-(move-shape(move-shape(move-shape(move-shape C1 5) 5) 5) 5)
-(move-shape(move-shape(move-shape(move-shape R1 5) 5) 5) 5)
+(draw-shape(move-shape(move-shape(move-shape(move-shape C1 5) 5) 5) 5))
+(draw-shape(move-shape(move-shape(move-shape(move-shape R1 5) 5) 5) 5))
