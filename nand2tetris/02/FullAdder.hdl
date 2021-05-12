@@ -15,6 +15,6 @@ CHIP FullAdder {
     PARTS:
     HalfAdder(a = a, b = b, sum = s1, carry = co1);
     HalfAdder(a = s1, b = c, sum = sum, carry = co2);
-    Or(a = co1, b = co2, out = carry);
+    Or(a = co1, b = co2, out = carry);  // impossible: co1 = co2 = 1
 
 }
